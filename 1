@@ -1,65 +1,18 @@
+return function(module)
+	module.setup()
+
+	require("mason-lspconfig")
+		.setup(
+	{
+		ensure_installed={
+			"cpptools",
+			"cpplint",
+			"clangd",
+			"ast-grep",
+			"asm-lsp"
+		}
+	})
 
 
 
-
-
-
-
-local reg={
-	halts={
-		BNTF=0x1
-	},
-	packages=0x0,
-}
-
-function reg_extr(n)
-	return bit.band(reg.packages,n)==n
 end
-
-function reg_add(n)
-	if(reg_extr(n))then
-		return reg.halts.BNTF;
-	end
-	reg.packages=bit.bor(reg.packages,n);
-end
-
-function sf(...)
-	return string.format(...)
-end
-
-function gpname(paths)
-	print(paths[1])
-	return paths[#paths]
-end
-
-function reg_rdmwhm(rhalt,stacktrace)
-	assert(rhalt~=reg.halts.BNTF,sf("BNTF %s, invalid.",stacktrace))
-end
-
-function setup()
-	
-end
-
-
-function strspath(s)
-	local p={}
-
-		for subs,_ in s:gmatch("[%a]*")do
-			p[#p+1]=subs
-			s=s:sub(0,subs:len())
-			print(s)
-		end
-	
-
-	return p
-end
-
-
-function install()
-	for id,path in pairs(require("dependencies")) do
-		local pn=gpname(strspath(path))
-
-	end
-end
-
-install()
