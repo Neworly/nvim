@@ -1,8 +1,4 @@
-
-
-
-
-
+local INSTALLED=0
 
 
 local reg={
@@ -36,14 +32,22 @@ function reg_rdmwhm(rhalt,stacktrace)
 	assert(rhalt~=reg.halts.BNTF,sf("BNTF %s, invalid.",stacktrace))
 end
 
-function setup()
-	
+function setup(packages)
+	if(INSTALLE==0)then return end
+	for id,path in ipairs(require("dependencies")) do
+		if(reg_extr(id)==false)then
+			return false;
+		end
+
+		local mn=packages[id]
+		require(mn.."_config")(require(mn))
+	end
+	return true;
 end
 
 
 function strspath(s)
 	local paths={}
-
 	s=s.."/"
 	for subs,k in s:gmatch("[%a.]*")do	
 		if(subs:len()>0)then
@@ -51,7 +55,6 @@ function strspath(s)
 		end
 		s=s:sub(subs:len()+1,s:len())
 	end
-	
 	return paths
 end
 
@@ -60,8 +63,9 @@ function install()
 	local vfn=vim.fn
 	local packpath=vfn.stdpath("data").."/site/pack/packer/start"
 
-	local ali={}
-		
+	local ali={}	
+	local seen={}
+	
 	for id,path in pairs(require("dependencies")) do
 		local pn=gpname(strspath(path))
 		local installpath=string.format("%s/%s", packpath,pn)
@@ -72,13 +76,25 @@ function install()
 		else
 			ali[#ali+1]=path
 		end
+
 		vim.cmd(string.format("packadd %s",pn));
+		seen[#seen+1]=pn:sub(0,pn:find(".nvim")-1)
 		reg_add(id);
 	end
+
 
 	for _,alp in ipairs(ali) do
 		print(alp, " is alread installed")
 	end
+
+	INSTALLED=1
+	return seen
 end
 
-install()
+if not setup(install()) then
+	print("Something went wrong, please restart neovim :(")
+else
+	print("Everything's ready :)")
+end
+
+
