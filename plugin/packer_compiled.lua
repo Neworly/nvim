@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/root/.cache/nvim/packer_hererocks/2.1.1727870382/share/lua/5.1/?.lua;/root/.cache/nvim/packer_hererocks/2.1.1727870382/share/lua/5.1/?/init.lua;/root/.cache/nvim/packer_hererocks/2.1.1727870382/lib/luarocks/rocks-5.1/?.lua;/root/.cache/nvim/packer_hererocks/2.1.1727870382/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/root/.cache/nvim/packer_hererocks/2.1.1727870382/lib/lua/5.1/?.so"
+local package_path_str = "/home/dev/.cache/nvim/packer_hererocks/2.1.1713484068/share/lua/5.1/?.lua;/home/dev/.cache/nvim/packer_hererocks/2.1.1713484068/share/lua/5.1/?/init.lua;/home/dev/.cache/nvim/packer_hererocks/2.1.1713484068/lib/luarocks/rocks-5.1/?.lua;/home/dev/.cache/nvim/packer_hererocks/2.1.1713484068/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/dev/.cache/nvim/packer_hererocks/2.1.1713484068/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -74,39 +74,94 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  LuaSnip = {
+    loaded = true,
+    path = "/home/dev/.local/share/nvim/site/pack/packer/start/LuaSnip",
+    url = "https://github.com/L3MON4D3/LuaSnip"
+  },
+  ["cmp-buffer"] = {
+    loaded = true,
+    path = "/home/dev/.local/share/nvim/site/pack/packer/start/cmp-buffer",
+    url = "https://github.com/hrsh7th/cmp-buffer"
+  },
+  ["cmp-calc"] = {
+    loaded = true,
+    path = "/home/dev/.local/share/nvim/site/pack/packer/start/cmp-calc",
+    url = "https://github.com/hrsh7th/cmp-calc"
+  },
+  ["cmp-emoji"] = {
+    loaded = true,
+    path = "/home/dev/.local/share/nvim/site/pack/packer/start/cmp-emoji",
+    url = "https://github.com/hrsh7th/cmp-emoji"
+  },
+  ["cmp-look"] = {
+    loaded = true,
+    path = "/home/dev/.local/share/nvim/site/pack/packer/start/cmp-look",
+    url = "https://github.com/octaltree/cmp-look"
+  },
+  ["cmp-nvim-lsp"] = {
+    loaded = true,
+    path = "/home/dev/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
+    url = "https://github.com/hrsh7th/cmp-nvim-lsp"
+  },
+  ["cmp-nvim-lua"] = {
+    loaded = true,
+    path = "/home/dev/.local/share/nvim/site/pack/packer/start/cmp-nvim-lua",
+    url = "https://github.com/hrsh7th/cmp-nvim-lua"
+  },
+  ["cmp-nvim-ultisnips"] = {
+    loaded = true,
+    path = "/home/dev/.local/share/nvim/site/pack/packer/start/cmp-nvim-ultisnips",
+    url = "https://github.com/quangnguyen30192/cmp-nvim-ultisnips"
+  },
+  ["cmp-path"] = {
+    loaded = true,
+    path = "/home/dev/.local/share/nvim/site/pack/packer/start/cmp-path",
+    url = "https://github.com/hrsh7th/cmp-path"
+  },
+  ["cmp-spell"] = {
+    loaded = true,
+    path = "/home/dev/.local/share/nvim/site/pack/packer/start/cmp-spell",
+    url = "https://github.com/f3fora/cmp-spell"
+  },
   everforest = {
     loaded = true,
-    path = "/root/.local/share/nvim/site/pack/packer/start/everforest",
+    path = "/home/dev/.local/share/nvim/site/pack/packer/start/everforest",
     url = "https://github.com/sainnhe/everforest"
   },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
-    path = "/root/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
+    path = "/home/dev/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
     url = "https://github.com/williamboman/mason-lspconfig.nvim"
+  },
+  ["nvim-cmp"] = {
+    loaded = true,
+    path = "/home/dev/.local/share/nvim/site/pack/packer/start/nvim-cmp",
+    url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
-    path = "/root/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+    path = "/home/dev/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["nvim-treesitter"] = {
     loaded = true,
-    path = "/root/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
+    path = "/home/dev/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
-    path = "/root/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    path = "/home/dev/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/nvim-tree/nvim-web-devicons"
   },
   ["oldworld.nvim"] = {
     loaded = true,
-    path = "/root/.local/share/nvim/site/pack/packer/start/oldworld.nvim",
+    path = "/home/dev/.local/share/nvim/site/pack/packer/start/oldworld.nvim",
     url = "https://github.com/dgox16/oldworld.nvim"
   },
   ["vim-afterglow"] = {
     loaded = true,
-    path = "/root/.local/share/nvim/site/pack/packer/start/vim-afterglow",
+    path = "/home/dev/.local/share/nvim/site/pack/packer/start/vim-afterglow",
     url = "https://github.com/danilo-augusto/vim-afterglow"
   }
 }

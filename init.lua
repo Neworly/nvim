@@ -41,6 +41,20 @@ function setup(packages)
 		local mn=packages[id]
 		require(mn.."_config")(require(mn))
 	end
+	require("nvim_config")
+	require("custom.keymaps")
+      
+	require("luasnip").setup()
+	require("cmp").setup({
+	  completion={completeop="menu,menuone,noinsert"},
+	  sources={
+	    {name="nvim_lsp"},
+	    {name="luasnip"},
+	    {name="buffer"},
+	    {name="path"}
+	  },
+	})
+
 	return true;
 end
 
@@ -93,10 +107,7 @@ end
 
 if not setup(install()) then
 	print("Something went wrong, please restart neovim :(")
-else	
-	require("nvim_config")
-	require("custom.keymaps")
+else
 	print("Everything's ready :)")
 end
-
 
