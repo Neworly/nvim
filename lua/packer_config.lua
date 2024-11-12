@@ -5,8 +5,11 @@ return function(module)
 		pinstall{ "sainnhe/everforest" }
 		pinstall{ "neovim/nvim-lspconfig" }
 		pinstall{ "williamboman/mason-lspconfig.nvim" }
-		pinstall{ "nvim-treesitter/nvim-treesitter"}
-		pinstall{ "nvim-tree/nvim-web-devicons"}
-		pinstall{ "dgox16/oldworld.nvim"}
-	end) 
+
+		pinstall{ "nvim-treesitter/nvim-treesitter" }
+		pinstall{ "nvim-tree/nvim-web-devicons" }
+		pinstall{ "dgox16/oldworld.nvim" }
+
+		pinstall{ "danilo-augusto/vim-afterglow" }
+	end)
 end
