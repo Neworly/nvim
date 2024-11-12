@@ -7,7 +7,7 @@ local localmaps={}
 function setkey(m,seq,action,description)
 	description=description or {}
 	if(localmaps[seq] and localmaps[seq]==m)then
-		print("Attempt to overwrite an already set keymap for sequence: ",seq,"and mode, ",m)
+		print("Attempt to overwrite an already set keymap for sequence: ",seq," and mode: ",m)
 		return
 	end
 	localmaps[seq]=m
@@ -18,13 +18,6 @@ end
 setkey('n', "<leader>cd", function() 
 	vim.cmd("colorscheme default")
 end)
-
-setkey('n', "<leader>cd", function() 
-	vim.cmd("colorscheme default")
-end)
-
-
-
 
 setkey('n', "<leader>ca", function() 
 	vim.cmd("colorscheme afterglow")
