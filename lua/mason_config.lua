@@ -1,4 +1,4 @@
-local lsps=require("lspf")
+local lsps=require("lsp.langs")
 
 
 return function(module)

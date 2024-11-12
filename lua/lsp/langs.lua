@@ -2,7 +2,7 @@
 
 
 
-local lspconf=require("lspconf")
+local lspconf=require("lsp.conf")
 
 return {
 	{"lua_ls",lspconf.lua},

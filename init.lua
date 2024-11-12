@@ -94,7 +94,9 @@ end
 if not setup(install()) then
 	print("Something went wrong, please restart neovim :(")
 else	
-	require("custom_nvimconfig")
-	require("custom_keymaps")
+	require("nvim_config")
+	require("custom.keymaps")
 	print("Everything's ready :)")
 end
+
+
