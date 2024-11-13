@@ -109,7 +109,7 @@ function setup(packages)
 		end
 		
 		local config=require(mn.."_config")
-		if not module then
+		if not config then
 			drawnd(function()
 				print(("!!FIX: Please create '%s_config.lua' in /lua/\n----------"):format(mn))
 			end)
