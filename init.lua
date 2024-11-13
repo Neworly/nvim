@@ -1,4 +1,5 @@
 INSTALLED=0
+DEFAULT_THEME="default"
 
 local reg={
 	halts={
@@ -173,5 +174,6 @@ if not setup(install()) then
 	print("Something went wrong, please restart neovim :(")
 else
 	print("Everything's ready, the setup at least :)")
+	vim.cmd("colorscheme ", DEFAULT_THEME)
 end
 
