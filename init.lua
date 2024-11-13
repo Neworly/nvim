@@ -18,6 +18,17 @@ function reg_add(n)
 	reg.packages=bit.bor(reg.packages,n);
 end
 
+function vim_which_package_are_installed(name)
+    for id,pgname in pairs(require("dependencies")) do
+      if(reg_extr(id))then
+	print("> ", pgname)
+      else
+	return false
+      end
+    end
+    return true
+end
+
 function sf(...)
 	return string.format(...)
 end
@@ -31,6 +42,56 @@ function reg_rdmwhm(rhalt,stacktrace)
 	assert(rhalt~=reg.halts.BNTF,sf("BNTF %s, invalid.",stacktrace))
 end
 
+NO_CONFIG="nil"
+
+
+function drawnd(f)
+  print("----------")
+  return f()
+end
+
+function finalize()
+  local config={}
+
+  drawnd(function()
+    for mname, value in pairs({
+      cmp={
+	completion={completeop="menu,menuone,noinsert"},
+	sources={
+	  {name="nvim_lsp"},
+	  {name="luasnip"},
+	  {name="buffer"},
+	  {name="path"}
+	},
+      },luasnip={},
+
+      ["nvim_config"]=NO_CONFIG,
+      ["custom.keymaps"]=NO_CONFIG,
+    }) do
+      local module=require(mname)
+      print("LOADING: ",mname)    
+      if not module then
+	return false
+      end
+      print("OK, LOADED: ",mname)
+      if(NO_CONFIG~=value and module.setup)then
+	module.setup(value)
+	config[#config+1]=mname
+      end
+    end
+  end)
+
+  drawnd(function()
+    for i = 1, #config do
+      print("INITIALIZED: ",config[i])
+    end
+  end)
+
+  return drawnd(function()
+    return vim_which_package_are_installed()
+  end)
+end
+
 function setup(packages)
 	if(INSTALLED==0)then return end
 	for id,_ in ipairs(require("dependencies")) do
@@ -39,25 +100,26 @@ function setup(packages)
 		end
 
 		local mn=packages[id]
-		require(mn.."_config")(require(mn))
+		local module=require(mn)
+		if not module then
+			drawnd(function()
+				print("!!FIX: An error occured, please ignore this wall of error and run ':PackerInstall' in nvim.\nThen restart it, unfortunately this cannot be automated with Packer :(\n--------")
+			end)
+			return false
+		end
+		
+		local config=require(mn.."_config")
+		if not module then
+			drawnd(function()
+				print(("!!FIX: Please create '%s_config.lua' in /lua/\n----------"):format(mn))
+			end)
+			return false
+		end
+		config(module)
+
 	end
-	require("nvim_config")
-	require("custom.keymaps")
-      
-	require("luasnip").setup()
-	require("cmp").setup({
-	  completion={completeop="menu,menuone,noinsert"},
-	  sources={
-	    {name="nvim_lsp"},
-	    {name="luasnip"},
-	    {name="buffer"},
-	    {name="path"}
-	  },
-	})
-
-	return true;
+	return finalize();
 end
-
 
 function strspath(s)
 	local paths={}
@@ -108,6 +170,6 @@ end
 if not setup(install()) then
 	print("Something went wrong, please restart neovim :(")
 else
-	print("Everything's ready :)")
+	print("Everything's ready, the setup at least :)")
 end
 
