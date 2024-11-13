@@ -16,14 +16,7 @@ setkey('n',"<leader>ff",tbuiltin.find_files)
 setkey('n',"<leader>fg",tbuiltin.live_grep)
 setkey('n',"<leader>fb",tbuiltin.buffers)
 
-
-
-
-local themes={
-  acycle=require("custom.themes").get(),
-  target=0
-}
-
+local themes={acycle=nil,target=0}
 setkey('n', "<F9>", function()
   themes.acycle=require("custom.themes").get()
   themes.target=(themes.target+1)%(#themes.acycle+1)
