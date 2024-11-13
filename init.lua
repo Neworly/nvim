@@ -53,7 +53,7 @@ end
 function finalize()
   local config={}
 
-  drawnd(function()
+  if not drawnd(function()
     for mname, value in pairs({
       cmp={
 	completion={completeop="menu,menuone,noinsert"},
@@ -79,7 +79,9 @@ function finalize()
 	config[#config+1]=mname
       end
     end
-  end)
+  end) then
+    return false
+  end
 
   drawnd(function()
     for i = 1, #config do
