@@ -53,7 +53,7 @@ end
 function finalize()
   local config={}
 
-  if not drawnd(function()
+  if drawnd(function()
     for mname, value in pairs({
       cmp={
 	completion={completeop="menu,menuone,noinsert"},
@@ -71,7 +71,7 @@ function finalize()
       local module=require(mname)
       print("LOADING: ",mname)    
       if not module then
-	return false
+	return "ghost" 
       end
       print("OK, LOADED: ",mname)
       if(NO_CONFIG~=value and module.setup)then
@@ -79,7 +79,7 @@ function finalize()
 	config[#config+1]=mname
       end
     end
-  end) then
+  end) == "ghost" then
     return false
   end
 
