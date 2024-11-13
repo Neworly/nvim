@@ -16,10 +16,19 @@ setkey('n',"<leader>ff",tbuiltin.find_files)
 setkey('n',"<leader>fg",tbuiltin.live_grep)
 setkey('n',"<leader>fb",tbuiltin.buffers)
 
-local themes={acycle={"default","afterglow","oldworld"},target=0}
+
+
+
+local themes={
+  acycle=require("custom.themes").get(),
+  target=0
+}
+
 setkey('n', "<F9>", function()
-  themes.target=(themes.target+1)%#themes.acycle+1
+  themes.acycle=require("custom.themes").get()
+  themes.target=(themes.target+1)%(#themes.acycle+1)
+  themes.target=themes.target==0 and 1 or themes.target
   local theme=themes.acycle[themes.target]
-  vim.cmd(string.format("colorscheme %s",themes.acycle[themes.target]))
-  print("theme: ",theme)
+  vim.cmd(("colorscheme %s"):format(theme))
+  print("colorscheme: ", theme)
 end)

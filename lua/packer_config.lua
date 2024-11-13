@@ -25,7 +25,12 @@ return function(module)
 
 		pinstall{ "L3MON4D3/LuaSnip" }
 
+		for i = 1, #userplugins do
+		  pinstall({userplugins[i][1]})
+		  if (type(userplugins[i][2])=="function")then
+		  	userplugins[i][2]()
+                  end
+		end
 
-		pinstall(userplugins)
 	end)
 end

@@ -69,9 +69,9 @@ function finalize()
       ["custom.keymaps"]=NO_CONFIG,
     }) do
       local module=require(mname)
-      print("LOADING: ",mname)    
+      print("LOADING: ",mname)
       if not module then
-	return "ghost" 
+	return "ghost"
       end
       print("OK, LOADED: ",mname)
       if(NO_CONFIG~=value and module.setup)then
