@@ -2,6 +2,8 @@ local userplugins=require("plugins.user")
 
 return function(module)
 	module.startup(function(pinstall)
+
+
 		pinstall{ "sainnhe/everforest" }
 		pinstall{ "neovim/nvim-lspconfig" }
 		pinstall{ "williamboman/mason-lspconfig.nvim" }
@@ -31,6 +33,5 @@ return function(module)
 		  	userplugins[i][2]()
                   end
 		end
-
 	end)
 end
