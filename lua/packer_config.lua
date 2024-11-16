@@ -14,18 +14,6 @@ return function(module)
 
 		pinstall{ "danilo-augusto/vim-afterglow" }
 
-		pinstall{
-		  "hrsh7th/nvim-cmp",
-		   requires = {
-		    "hrsh7th/cmp-buffer", "hrsh7th/cmp-nvim-lsp",
-		    'quangnguyen30192/cmp-nvim-ultisnips', 'hrsh7th/cmp-nvim-lua',
-		    'octaltree/cmp-look', 'hrsh7th/cmp-path', 'hrsh7th/cmp-calc',
-		    'f3fora/cmp-spell', 'hrsh7th/cmp-emoji'
-		   }
-		}
-
-
-		pinstall{ "L3MON4D3/LuaSnip" }
 
 		for i = 1, #userplugins do
 		  pinstall({userplugins[i][1]})
@@ -35,3 +23,6 @@ return function(module)
 		end
 	end)
 end
+
+
+

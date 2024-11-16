@@ -24,4 +24,4 @@ setkey('n', "<F9>", function()
   local theme=themes.acycle[themes.target]
   vim.cmd(("colorscheme %s"):format(theme))
   print("colorscheme: ", theme)
-end)
+end)  
