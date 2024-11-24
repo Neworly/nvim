@@ -13,6 +13,7 @@ return {
 	-- THIS A BAD IDEA, PLEASE DON'T DO THIS.
 
   end},
+
   { "ellisonleao/gruvbox.nvim",function() 
 	-- You want a specific theme allowed in the cycling?
 	themes.push("gruvbox") -- THIS IS UNSAFE, PLEASE MAKE SURE THE NAME MATCHES THE THEME

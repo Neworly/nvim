@@ -27,11 +27,16 @@ return function(module)
 
 		pinstall{ "L3MON4D3/LuaSnip" }
 
+		local ud={}
+		ud.requires={}
 		for i = 1, #userplugins do
-		  pinstall({userplugins[i][1]})
+		  table.insert(ud,userplugins[i][1])
+		  local config=userplugins[i][3] or {}
+		  table.insert(ud.requires,config)
 		  if (type(userplugins[i][2])=="function")then
 		  	userplugins[i][2]()
                   end
+		  pinstall(ud)
 		end
 	end)
 end
