@@ -17,19 +17,39 @@ return {
 	end,
 
 	astgrep=function()
-		return{}
+	  return{}
 	end,
 
 	asm=function()
-		return{}
+	  return{}
 	end,
 
 	clangd=function()
-		return{}
+	  return{}
 	end,
 
 	zls=function()
 	  vim.g.zig_fmt_autosave=0
+	  return{}
+	end,
+
+	elixir=function()
+	  return{}
+	end,
+
+	erlang=function()
+	  return{}
+	end,
+
+	php=function()
+	  return{}
+	end,
+
+	haskell=function()
+	  return{}
+	end,
+
+	js=function()
 	  return{}
 	end
 }

@@ -4,7 +4,11 @@ return {
 	{"ast_grep",lspconf.astgrep},
 	{"clangd",lspconf.clangd},
 	{"asm_lsp",lspconf.asm},
-	{"zls",lspconf.zls}
+	{"zls",lspconf.zls},
+	{"elixirls",lspconf.elixir},
+	{"intelephense",lspconf.php},
+	{"hls",lspconf.haskell},
+	{"vtsls",lspconf.js}
 }
 
 

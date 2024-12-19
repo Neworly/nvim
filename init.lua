@@ -62,9 +62,8 @@ function finalize()
 	  {name="luasnip"},
 	  {name="buffer"},
 	  {name="path"}
-	},
+	},snippet={expand=function(a) require("luasnip").lsp_expand(a.body)end},
       },luasnip={},
-
       ["nvim_config"]=NO_CONFIG,
       ["custom.keymaps"]=NO_CONFIG,
     }) do

@@ -9,6 +9,7 @@ return function(module)
 		pinstall{ "williamboman/mason-lspconfig.nvim" }
 
 		pinstall{ "nvim-treesitter/nvim-treesitter" }
+
 		pinstall{ "nvim-tree/nvim-web-devicons" }
 		pinstall{ "dgox16/oldworld.nvim" }
 
@@ -24,8 +25,11 @@ return function(module)
 		   }
 		}
 
-
-		pinstall{ "L3MON4D3/LuaSnip" }
+		pinstall{ "L3MON4D3/LuaSnip",
+		  tag="v2.*",
+		  run="make install_jsregexp",
+		  after="nvim-cmp",
+		}
 
 		local ud={}
 		ud.requires={}
